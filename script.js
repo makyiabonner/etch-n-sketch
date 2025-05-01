@@ -2,7 +2,7 @@
 Project functionality
 Selecting grid size from 16-100
     storage var: rangeState, colorState(excluding rainbow states)
-    functionality var: setClear(), setColor(input), setOpacity(element.target), handleRainbow()
+    functionality var: setClear(), setColor(input), setOpacity(element.target), setRainbow()
     -Grid should match users requested boxes
         -Have a slider input that has event listener to change amount
         -should be input type range with value being sent to rangeState
@@ -55,10 +55,9 @@ function setRange(range = 16) {
 
 //set btn color
 function setColor(input) {
-  if (rainbowState) {
-    rainbowState = false;
-    colorState = true;
-  }
+  rainbowState = false;
+  colorState = true;
+
   currentColor = input.target.value;
 }
 
@@ -69,24 +68,23 @@ function setOpacity(e) {
 }
 
 //handle colored btn
-function handleColor(input) {
+function handleGridButton(input) {
   if (rainbowState) {
-    rainbowState = false;
-    colorState = true;
+    input.target.style.backgroundColor = setRainbow();
+  } else if (colorState) {
+    input.target.style.backgroundColor = currentColor;
   }
-  return (input.target.style.backgroundColor = currentColor);
 }
-
 //handle rainbow colored btn
-function handleRainbow(input) {
-  if (colorState) {
-    colorState = false;
-    rainbowState = true;
-  }
+function setRainbow() {
+  rainbowState = true;
+  colorState = false;
+
   const randomNumOne = Math.floor(Math.random() * 256);
   const randomNumTwo = Math.floor(Math.random() * 256);
   const randomNumThree = Math.floor(Math.random() * 256);
-  return (currentColor = `rgb(${randomNumOne}, ${randomNumTwo}, ${randomNumThree})`);
+  const rainbow = `rgb(${randomNumOne}, ${randomNumTwo}, ${randomNumThree})`;
+  return rainbow;
 }
 
 //creating DOM elements
@@ -122,6 +120,6 @@ ROW_DIV.appendChild(RAINBOW_SETTER);
 //add event-listeners
 //generate buttons
 COLOR_SETTER.addEventListener("input", setColor);
-RAINBOW_SETTER.addEventListener("click", handleRainbow);
-GRID.addEventListener("mouseover", handleColor);
+RAINBOW_SETTER.addEventListener("click", setRainbow);
+GRID.addEventListener("mouseover", handleButton);
 GRID_SETTER.addEventListener("input", (e) => setRange(e.target.value));
