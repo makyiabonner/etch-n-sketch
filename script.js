@@ -47,8 +47,9 @@ function setColor(input) {
 }
 
 //set btn opacity
-function setOpacity(element) {
-  element.target.style.opacity += 10;
+function setOpacity(e) {
+  let currentOpacity = e.target.style.opacity.slice(0, 3) + 10;
+  e.target.style.opacity = `${currentOpacity}%`;
 }
 
 //handle colored btn
@@ -69,6 +70,7 @@ function handleRainbow() {
   const randomNum = Math.floor(Math.random() * 256);
   element.target.style.backgroundColor = rgb(randomNum, randomNum, randomNum);
 }
+
 //creating DOM elements
 const TITLE = document.createElement("h1");
 const CONTAINER = document.createElement("container");
