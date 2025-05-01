@@ -76,11 +76,13 @@ function addOpacity(e) {
 
 //handle colored btn
 function handleGridButton(input) {
-  if (rainbowState) {
-    input.target.style.backgroundColor = setRainbow();
-  } else if (colorState) {
-    addOpacity(input);
-    input.target.style.backgroundColor = currentColor;
+  if (input.target.tagName === "BUTTON") {
+    if (rainbowState) {
+      input.target.style.backgroundColor = setRainbow();
+    } else if (colorState) {
+      addOpacity(input);
+      input.target.style.backgroundColor = currentColor;
+    }
   }
 }
 //handle rainbow colored btn
