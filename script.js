@@ -40,7 +40,11 @@ function setClear() {
 
 //set grid range
 function setRange(input) {
+  if (GRID.firstChild) {
+    GRID.textContent = "";
+  }
   currentRange = input;
+  console.log(input);
   for (let i = 0; i < currentRange; i++) {
     const BUTTON = document.createElement("button");
     BUTTON.classList.add("grid-btn");
@@ -104,7 +108,7 @@ GRID_SETTER.setAttribute("max", 100);
 ROW_DIV.classList.add("input-row");
 GRID_SETTER.classList.add("input-btn");
 COLOR_SETTER.classList.add("input-btn");
-GRID.classList.add("container");
+GRID.classList.add("grid");
 
 TITLE.textContent = "Welcome to Etch-n-sketch";
 RAINBOW_SETTER.textContent = "Rainbow Mode";
@@ -119,6 +123,4 @@ ROW_DIV.appendChild(RAINBOW_SETTER);
 
 //add event-listeners
 //generate buttons
-GRID_SETTER.addEventListener("input", (e) =>
-  setRange(e.target.getAttribute("value"))
-);
+GRID_SETTER.addEventListener("input", (e) => setRange(e.target.value));
