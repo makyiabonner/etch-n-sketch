@@ -38,6 +38,15 @@ function setClear() {
   BUTTON.style.backgroundColor = "white";
 }
 
+//set grid range
+function setRange(input){
+    for(let i = 0; i < input; i++){
+        const BUTTON = document.createElement('button')
+        BUTTON.classList.add('grid-btn')
+        GRID.appendChild(BUTTON);
+    }
+}
+
 //set btn color
 function setColor(input) {
   if (rainbowState) {
@@ -78,7 +87,7 @@ function handleRainbow() {
 
 //creating DOM elements
 const TITLE = document.createElement("h1");
-const CONTAINER = document.createElement("container");
+const GRID = document.createElement("container");
 const ROW_DIV = document.createElement("div");
 const COLOR_SETTER = document.createElement("input");
 const GRID_SETTER = document.createElement("input");
@@ -92,15 +101,20 @@ GRID_SETTER.setAttribute("type", "range");
 ROW_DIV.classList.add("input-row");
 GRID_SETTER.classList.add("input-btn");
 COLOR_SETTER.classList.add("input-btn");
-CONTAINER.classList.add("container");
+GRID.classList.add("container");
 
 TITLE.textContent = "Welcome to Etch-n-sketch";
 RAINBOW_SETTER.textContent = "Rainbow Mode";
 
 //appending DOM elements
 document.body.appendChild(TITLE);
-document.body.appendChild(CONTAINER);
+document.body.appendChild(GRID);
 document.body.appendChild(ROW_DIV);
 ROW_DIV.appendChild(GRID_SETTER);
 ROW_DIV.appendChild(COLOR_SETTER);
 ROW_DIV.appendChild(RAINBOW_SETTER);
+
+
+//add event-listeners
+//generate buttons
+GRID_SETTER.addEventListener('mousedown', (e) => )
