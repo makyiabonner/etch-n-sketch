@@ -59,7 +59,7 @@ function setColor(input) {
     rainbowState = false;
     colorState = true;
   }
-  return (currentColor = input);
+  currentColor = input.target.value;
 }
 
 //set btn opacity
@@ -69,26 +69,24 @@ function setOpacity(e) {
 }
 
 //handle colored btn
-function handleColor() {
+function handleColor(input) {
   if (rainbowState) {
     rainbowState = false;
     colorState = true;
   }
-  return (e.target.style.backgroundColor = currentColor);
+  return (input.target.style.backgroundColor = currentColor);
 }
 
 //handle rainbow colored btn
-function handleRainbow() {
+function handleRainbow(input) {
   if (colorState) {
     colorState = false;
     rainbowState = true;
   }
-  const randomNum = Math.floor(Math.random() * 256);
-  return (element.target.style.backgroundColor = rgb(
-    randomNum,
-    randomNum,
-    randomNum
-  ));
+  const randomNumOne = Math.floor(Math.random() * 256);
+  const randomNumTwo = Math.floor(Math.random() * 256);
+  const randomNumThree = Math.floor(Math.random() * 256);
+  return (currentColor = `rgb(${randomNumOne}, ${randomNumTwo}, ${randomNumThree})`);
 }
 
 //creating DOM elements
@@ -123,4 +121,7 @@ ROW_DIV.appendChild(RAINBOW_SETTER);
 
 //add event-listeners
 //generate buttons
+COLOR_SETTER.addEventListener("input", setColor);
+RAINBOW_SETTER.addEventListener("click", handleRainbow);
+GRID.addEventListener("mouseover", handleColor);
 GRID_SETTER.addEventListener("input", (e) => setRange(e.target.value));
