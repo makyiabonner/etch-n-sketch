@@ -39,12 +39,13 @@ function setClear() {
 }
 
 //set grid range
-function setRange(input){
-    for(let i = 0; i < input; i++){
-        const BUTTON = document.createElement('button')
-        BUTTON.classList.add('grid-btn')
-        GRID.appendChild(BUTTON);
-    }
+function setRange(input) {
+  for (let i = 0; i < input; i++) {
+    const BUTTON = document.createElement("button");
+    BUTTON.classList.add("grid-btn");
+    GRID.appendChild(BUTTON);
+  }
+  console.log(input);
 }
 
 //set btn color
@@ -96,6 +97,8 @@ const RAINBOW_SETTER = document.createElement("button");
 //set DOM attributes
 COLOR_SETTER.setAttribute("type", "color");
 GRID_SETTER.setAttribute("type", "range");
+GRID_SETTER.setAttribute("min", 16);
+GRID_SETTER.setAttribute("max", 100);
 
 //set DOM classes
 ROW_DIV.classList.add("input-row");
@@ -114,7 +117,8 @@ ROW_DIV.appendChild(GRID_SETTER);
 ROW_DIV.appendChild(COLOR_SETTER);
 ROW_DIV.appendChild(RAINBOW_SETTER);
 
-
 //add event-listeners
 //generate buttons
-GRID_SETTER.addEventListener('mousedown', (e) => )
+GRID_SETTER.addEventListener("mousedown", (e) =>
+  setRange(e.getAttribute("value"))
+);
