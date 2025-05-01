@@ -47,6 +47,7 @@ function setRange(range = 16) {
 
   for (let i = 0; i < Math.pow(range, 2); i++) {
     const BUTTON = document.createElement("button");
+    BUTTON.style.opacity = 0.1;
     BUTTON.classList.add("grid-btn");
 
     GRID.appendChild(BUTTON);
@@ -62,9 +63,15 @@ function setColor(input) {
 }
 
 //set btn opacity
-function setOpacity(e) {
-  let currentOpacity = e.target.style.opacity.slice(0, 3) + 10;
-  return (e.target.style.opacity = `${currentOpacity}%`);
+function addOpacity(e) {
+  /* 
+  take in element and check for Opacity
+  add Opacity by .1
+  return element's opacity equaling newOpacity
+  */
+  let newOpacity = (Number(e.target.style.opacity) || 0) + 0.2;
+  e.target.style.opacity = String(newOpacity);
+  console.log(e.target.style.opacity);
 }
 
 //handle colored btn
@@ -72,6 +79,7 @@ function handleGridButton(input) {
   if (rainbowState) {
     input.target.style.backgroundColor = setRainbow();
   } else if (colorState) {
+    addOpacity(input);
     input.target.style.backgroundColor = currentColor;
   }
 }
@@ -121,5 +129,5 @@ ROW_DIV.appendChild(RAINBOW_SETTER);
 //generate buttons
 COLOR_SETTER.addEventListener("input", setColor);
 RAINBOW_SETTER.addEventListener("click", setRainbow);
-GRID.addEventListener("mouseover", handleButton);
+GRID.addEventListener("mouseover", handleGridButton);
 GRID_SETTER.addEventListener("input", (e) => setRange(e.target.value));
