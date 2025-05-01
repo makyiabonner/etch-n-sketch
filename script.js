@@ -25,6 +25,50 @@ Selecting grid size from 16-100
         -should use inline styling for randomized coloring in rgb format
 */
 
+//Storage
+let rangeState = null;
+let colorState = null;
+let currentColor = null;
+let rainbowState = null;
+
+//functionality
+//clear grid
+function setClear() {
+  BUTTON.style.backgroundColor = "white";
+}
+
+//set btn color
+function setColor(input) {
+  if (rainbowState) {
+    rainbowState = false;
+    colorState = true;
+  }
+  return (currentColor = input);
+}
+
+//set btn opacity
+function setOpacity(element) {
+  element.target.style.opacity += 10;
+}
+
+//handle colored btn
+function handleColor() {
+  if (rainbowState) {
+    rainbowState = false;
+    colorState = true;
+  }
+  return (e.target.style.backgroundColor = currentColor);
+}
+
+//handle rainbow colored btn
+function handleRainbow() {
+  if (colorState) {
+    colorState = false;
+    rainbowState = true;
+  }
+  const randomNum = Math.floor(Math.random() * 256);
+  element.target.style.backgroundColor = rgb(randomNum, randomNum, randomNum);
+}
 //creating DOM elements
 const TITLE = document.createElement("h1");
 const CONTAINER = document.createElement("container");
