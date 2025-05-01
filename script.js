@@ -29,6 +29,7 @@ Selecting grid size from 16-100
 let rangeState = null;
 let colorState = null;
 let currentColor = null;
+let currentRange = null;
 let rainbowState = null;
 
 //functionality
@@ -81,6 +82,7 @@ const CONTAINER = document.createElement("container");
 const ROW_DIV = document.createElement("div");
 const COLOR_SETTER = document.createElement("input");
 const GRID_SETTER = document.createElement("input");
+const RAINBOW_SETTER = document.createElement("button");
 
 //set DOM attributes
 COLOR_SETTER.setAttribute("type", "color");
@@ -93,3 +95,12 @@ COLOR_SETTER.classList.add("input-btn");
 CONTAINER.classList.add("container");
 
 TITLE.textContent = "Welcome to Etch-n-sketch";
+RAINBOW_SETTER.textContent = "Rainbow Mode";
+
+//appending DOM elements
+document.body.appendChild(TITLE);
+document.body.appendChild(CONTAINER);
+document.body.appendChild(ROW_DIV);
+ROW_DIV.appendChild(GRID_SETTER);
+ROW_DIV.appendChild(COLOR_SETTER);
+ROW_DIV.appendChild(RAINBOW_SETTER);
