@@ -1,17 +1,23 @@
-
+*,
+*::after,
+*::before{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    gap: 0;
+}
 
 .grid{
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    border: black solid 1px;
     width: 800px;
-    height: auto;
+    height: 800px;
 }
 .grid-btn{
     border: solid 1px black;
-    background-color: red;
-    content: ' ';
-    width: 3rem;
-    height: 3rem;
+    background-color: white;
+    height: 100%;
+    width: 100%;
 }
 .input-row{
     display: flex;

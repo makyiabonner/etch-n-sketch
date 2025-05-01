@@ -29,7 +29,6 @@ Selecting grid size from 16-100
 let rangeState = null;
 let colorState = null;
 let currentColor = null;
-let currentRange = null;
 let rainbowState = null;
 
 //functionality
@@ -39,15 +38,17 @@ function setClear() {
 }
 
 //set grid range
-function setRange(input) {
+function setRange(range = 16) {
+  GRID.style.gridTemplateColumns = `repeat(${range}, 1fr)`;
+  GRID.style.gridTemplateRows = `repeat(${range}, 1fr)`;
   if (GRID.firstChild) {
     GRID.textContent = "";
   }
-  currentRange = input;
-  console.log(input);
-  for (let i = 0; i < currentRange; i++) {
+
+  for (let i = 0; i < Math.pow(range, 2); i++) {
     const BUTTON = document.createElement("button");
     BUTTON.classList.add("grid-btn");
+
     GRID.appendChild(BUTTON);
   }
 }
@@ -101,15 +102,14 @@ const RAINBOW_SETTER = document.createElement("button");
 //set DOM attributes
 COLOR_SETTER.setAttribute("type", "color");
 GRID_SETTER.setAttribute("type", "range");
-GRID_SETTER.setAttribute("min", 16);
-GRID_SETTER.setAttribute("max", 100);
+GRID_SETTER.setAttribute("min", 2);
+GRID_SETTER.setAttribute("max", 16);
 
 //set DOM classes
 ROW_DIV.classList.add("input-row");
 GRID_SETTER.classList.add("input-btn");
 COLOR_SETTER.classList.add("input-btn");
 GRID.classList.add("grid");
-
 TITLE.textContent = "Welcome to Etch-n-sketch";
 RAINBOW_SETTER.textContent = "Rainbow Mode";
 
