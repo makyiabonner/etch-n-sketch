@@ -49,7 +49,7 @@ function setColor(input) {
 //set btn opacity
 function setOpacity(e) {
   let currentOpacity = e.target.style.opacity.slice(0, 3) + 10;
-  e.target.style.opacity = `${currentOpacity}%`;
+  return (e.target.style.opacity = `${currentOpacity}%`);
 }
 
 //handle colored btn
@@ -68,12 +68,28 @@ function handleRainbow() {
     rainbowState = true;
   }
   const randomNum = Math.floor(Math.random() * 256);
-  element.target.style.backgroundColor = rgb(randomNum, randomNum, randomNum);
+  return (element.target.style.backgroundColor = rgb(
+    randomNum,
+    randomNum,
+    randomNum
+  ));
 }
 
 //creating DOM elements
 const TITLE = document.createElement("h1");
 const CONTAINER = document.createElement("container");
+const ROW_DIV = document.createElement("div");
+const COLOR_SETTER = document.createElement("input");
+const GRID_SETTER = document.createElement("input");
 
-//state changer
+//set DOM attributes
+COLOR_SETTER.setAttribute("type", "color");
+GRID_SETTER.setAttribute("type", "range");
+
+//set DOM classes
+ROW_DIV.classList.add("input-row");
+GRID_SETTER.classList.add("input-btn");
+COLOR_SETTER.classList.add("input-btn");
+CONTAINER.classList.add("container");
+
 TITLE.textContent = "Welcome to Etch-n-sketch";
