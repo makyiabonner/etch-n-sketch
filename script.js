@@ -40,12 +40,12 @@ function setClear() {
 
 //set grid range
 function setRange(input) {
-  for (let i = 0; i < input; i++) {
+  currentRange = input;
+  for (let i = 0; i < currentRange; i++) {
     const BUTTON = document.createElement("button");
     BUTTON.classList.add("grid-btn");
     GRID.appendChild(BUTTON);
   }
-  console.log(input);
 }
 
 //set btn color
@@ -119,6 +119,6 @@ ROW_DIV.appendChild(RAINBOW_SETTER);
 
 //add event-listeners
 //generate buttons
-GRID_SETTER.addEventListener("mousedown", (e) =>
-  setRange(e.getAttribute("value"))
+GRID_SETTER.addEventListener("input", (e) =>
+  setRange(e.target.getAttribute("value"))
 );
